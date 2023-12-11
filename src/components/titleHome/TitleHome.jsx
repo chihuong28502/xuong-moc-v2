@@ -1,8 +1,9 @@
+import './titleHome.css'
 function TitleHome({ title, colorText }) {
   return (
     <div>
       <div className="slide-product">
-        <h4
+        <h4 className='textTitle'
           style={{
             textTransform: "uppercase",
             fontSize: "2rem",

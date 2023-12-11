@@ -1,1 +1,16 @@
-
+.textTitle{
+  position: relative;
+  padding-top: 3rem;
+}
+.textTitle:after {
+  padding-bottom: 3rem;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  max-width: 10rem;
+  margin-top: 0.35rem;
+  border-top: 0.35rem solid #bd945f;
+}

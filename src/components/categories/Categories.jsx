@@ -19,8 +19,8 @@ function Categories() {
   }
   return (
     <>
-      <section id="home-category">
-        <div className="list-category container">
+      <section id="home-category" className="container-fluid">
+        <div className="list-category container-mx-10">
           <div className="row">
             {categories.map((category) => (
               <div className="col-md-3 my-5" key={category.id}>

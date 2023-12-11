@@ -21,8 +21,8 @@ function Products({ products }) {
   return (
     <>
       <div className="wrap-all-products d-flex justify-content-center">
-        <div className="box-content all-product container row">
-          <Slider {...settings}>
+        <div className="container-fluid">
+          <Slider {...settings} className="container-mx-10">
             {status === "succeeded" ? (
               products.map((product) => (
                 <Product key={product.id} product={product} />

@@ -233,7 +233,7 @@ function Product({ product }) {
               <i className="fa-regular fa-heart"></i>
             </button>
             <button className="btn" type="button" id="liveToastBtn">
-              <i class="fa-solid fa-cart-shopping"></i>
+              <i className="fa-solid fa-cart-shopping"></i>
             </button>
           </div>
         </div>

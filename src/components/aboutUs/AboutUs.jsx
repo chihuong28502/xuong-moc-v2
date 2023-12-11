@@ -26,10 +26,10 @@ function AboutUs() {
       {status === "loading" ? (
         <Loading />
       ) : (
-        <div className="home-aboutUs__content container">
+        <div className="home-aboutUs__content container-fluid">
           <TitleHome title={`VỀ CHÚNG TÔI`} colorText={"#fff"} />
 
-          <div className="row">
+          <div className="row container-mx-10">
             <div className="col-md-6">
               <img
                 src="http://cutuananh.devmaster.vn/images/AnhCatTC/ve-chung-toi/ve-chung-toi.jpg"
