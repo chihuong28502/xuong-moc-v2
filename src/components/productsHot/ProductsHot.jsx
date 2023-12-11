@@ -12,12 +12,18 @@ function ProductsHot() {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
-  const arr = products.filter((product) => product.hot === 1);
+  // const arr = products.filter((product) => product.hot === 1);
   return (
     <>
       <div className="wrap-cotnainer-home-item">
         <TitleHome title={"Sản phẩm nổi bật"} colorText={"#2e2c53"} />
-        {status === "succeeded" ? <Products products={arr} /> : <Loading />}
+        {status === "succeeded" ? (
+          <Products
+            products={products.filter((product) => product.hot === 1)}
+          />
+        ) : (
+          <Loading />
+        )}
       </div>
     </>
   );

@@ -7,14 +7,16 @@ import "./products.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import CustomArrows from "../slick-custom/CustomArrows";
 
 function Products({ products }) {
   const status = useSelector((state) => state.products.status);
   const settings = {
     autoplay: true,
-    autoplaySpeed: 1000,
-    speed: 500,
+    autoplaySpeed: 3000,
     slidesToShow: 4,
+    prevArrow: <CustomArrows direction="fa-solid fa-chevron-left" />,
+    nextArrow: <CustomArrows direction="fa-solid fa-chevron-right" />,
   };
   return (
     <>

@@ -1,33 +1,31 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BaseURLXMAPI } from "../utils/http";
+import { BaseURLXMAPILocal } from "../../utils/http";
 
-export const fetchCategories = createAsyncThunk(
-  "categories/fetchCategories",
+export const fetchPolicies = createAsyncThunk(
+  "policies/fetchPolicies",
   async () => {
-    const response = await axios.get(`${BaseURLXMAPI}/categories`);
+    const response = await axios.get(`${BaseURLXMAPILocal}/policies`);
     return response.data;
   }
 );
-
-const categoriesSlice = createSlice({
-  name: "posts",
+const policiesSlice = createSlice({
+  name: "policies",
   initialState: { data: [], status: "idle", error: null },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCategories.pending, (state) => {
+      .addCase(fetchPolicies.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchCategories.fulfilled, (state, action) => {
+      .addCase(fetchPolicies.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
       })
-      .addCase(fetchCategories.rejected, (state, action) => {
+      .addCase(fetchPolicies.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
   },
 });
-
-export default categoriesSlice.reducer;
+export default policiesSlice.reducer;

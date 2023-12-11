@@ -9,7 +9,8 @@
   transition: all 0.2s linear;
   font-size: 16px;
 }
-ol, ul {
+ol,
+ul {
   padding-left: 0;
 }
 .container-ct {
@@ -25,6 +26,18 @@ ol, ul {
   width: 30%;
   border-top: 0.35rem solid #fff;
 }
-.wrap-color-fff{
+.wrap-color-fff {
   background-color: #fff;
+}
+
+/* custom slick */
+.custom-arrow {
+  color: black;
+  font-size: 30px;
+  outline: none;
+  max-height: 100%;
+  background-color: inherit;
+}
+.slick-slider {
+  display: flex;
 }
