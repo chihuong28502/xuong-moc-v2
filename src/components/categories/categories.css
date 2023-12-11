@@ -1,0 +1,32 @@
+#home-category {
+  background-color: #f3f3f3;
+}
+.list-category {
+  background-color: #fff;
+  position: relative;
+  top: -5rem;
+  padding: 0rem 5rem;
+}
+.list-category a:hover p {
+  color: #bd945f;
+}
+.slide-product {
+  text-align: center;
+}
+.list-category a {
+  text-decoration: none;
+  color: #2e2c53;
+}
+.list-category img {
+  display: block;
+  margin: 0 auto;
+  width: 10rem;
+}
+.list-category p {
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: #2e2c53;
+  font-size: 1rem;
+  font-weight: 700;
+}
