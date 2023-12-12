@@ -55,11 +55,32 @@
   font-weight: 600;
   color: #222222;
 }
+.all-product__item--title h4::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 60%;
+  max-width: 10rem;
+  margin-top: 0.35rem;
+  border-top: 0.35rem solid #bd945f;
+}
+.all-product__item--title h4 {
+  text-transform: uppercase;
+  color: #2c2e53;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  position: relative;
+}
 .all-product__item--title .see-all:hover {
   color: #bd945f;
 }
 .all-product__item--title .see-all {
-  font-size: 1.6rem;
+  text-decoration: none;
+  font-size: 1.2rem;
 }
 .product-card__group-btn .btn {
   font-size: 1.6rem;

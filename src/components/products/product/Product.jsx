@@ -1,8 +1,8 @@
 import React from "react";
-function Product({ product }) {
+function Product({ product, column }) {
   return (
     <>
-      <div className="mx-2">
+      <div className={`${column}`}>
         <div className="product-card ">
           <img
             src={`http://apixm.devmaster.vn/${product?.image}`}

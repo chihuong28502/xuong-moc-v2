@@ -8,9 +8,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CustomArrows from "../slick-custom/CustomArrows";
+import { Link } from "react-router-dom";
 
-function Products({ products }) {
+function Products({ products, showSlider }) {
   const status = useSelector((state) => state.products.status);
+  const categories = useSelector((state) => state.categories.data);
+  console.log(categories);
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
@@ -18,19 +21,51 @@ function Products({ products }) {
     prevArrow: <CustomArrows direction="fa-solid fa-chevron-left" />,
     nextArrow: <CustomArrows direction="fa-solid fa-chevron-right" />,
   };
+  const elementAllproducts = categories.map((item, index) => {
+    return (
+      <div className="all-product__item" key={index}>
+        <div className="all-product__item--title">
+          <h4>{item.title}</h4>
+          <Link className="see-all" to={item.slug}>
+            Xem tất cả
+          </Link>
+        </div>
+        <div className="row mt-3">
+          {status === "succeeded" ? (
+            products
+              .filter((x) => x.cid === item.id)
+              .slice(0, 4)
+              .map((product) => (
+                <Product
+                  column={"col-md-3"}
+                  key={product.id}
+                  product={product}
+                />
+              ))
+          ) : (
+            <Loading />
+          )}
+        </div>
+      </div>
+    );
+  });
+
   return (
     <>
       <div className="wrap-all-products d-flex justify-content-center">
         <div className="container-fluid">
-          <Slider {...settings} className="container-mx-10">
-            {status === "succeeded" ? (
-              products.map((product) => (
-                <Product key={product.id} product={product} />
-              ))
-            ) : (
-              <Loading />
-            )}
-          </Slider>
+          {showSlider && (
+            <Slider {...settings} className="container-mx-10">
+              {status === "succeeded" ? (
+                products.map((product) => (
+                  <Product column={"mx-2"} key={product.id} product={product} />
+                ))
+              ) : (
+                <Loading />
+              )}
+            </Slider>
+          )}
+          {!showSlider && elementAllproducts}
         </div>
       </div>
     </>

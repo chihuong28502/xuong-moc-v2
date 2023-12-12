@@ -1,13 +1,24 @@
-import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
-import Home from "./pages/home/Home";
 import "./style.css";
+import listRouter from "./router";
+import { Route, Routes } from "react-router-dom";
 function App() {
+  console.log(listRouter);
   return (
     <>
-      <Header />
-      <Home />
-      <Footer />
+      {
+        <Routes>
+          {listRouter.map((route, index) => {
+            const ComponentSelect = route.component;
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={<ComponentSelect />}
+              />
+            );
+          })}
+        </Routes>
+      }
     </>
   );
 }

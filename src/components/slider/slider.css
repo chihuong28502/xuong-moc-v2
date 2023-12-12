@@ -42,8 +42,6 @@
   background-color: #fff;
 }
 /*  */
-.home-new-img-item:hover {
-}
 #scroll-top.active {
   top: calc(100% - 8rem);
 }

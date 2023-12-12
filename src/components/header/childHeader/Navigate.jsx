@@ -37,9 +37,9 @@ function Navigate() {
       <ul className="nav-list d-flex align-items-center my-0 w-100 justify-content-between ">
         {listNav.map((nav) => {
           return (
-            <a key={nav.id} className="nav-item d-flex">
+            <NavLink to={nav.router} key={nav.id} className={activeClassName}>
               {nav.title}
-            </a>
+            </NavLink>
           );
         })}
       </ul>

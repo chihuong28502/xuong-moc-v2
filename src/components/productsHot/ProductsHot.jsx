@@ -7,6 +7,7 @@ import TitleHome from "../titleHome/TitleHome";
 import "./productsHot.css";
 function ProductsHot() {
   const dispatch = useDispatch();
+  const showSlider = true;
   const products = useSelector((state) => state.products.data);
   const status = useSelector((state) => state.products.status);
   useEffect(() => {
@@ -19,6 +20,7 @@ function ProductsHot() {
         <TitleHome title={"Sản phẩm nổi bật"} colorText={"#2e2c53"} />
         {status === "succeeded" ? (
           <Products
+            showSlider={showSlider}
             products={products.filter((product) => product.hot === 1)}
           />
         ) : (

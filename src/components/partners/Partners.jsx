@@ -15,17 +15,17 @@ function Partners() {
   }, [dispatch]);
   const settings = {
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
     slidesToShow: 5,
   };
   return (
     <div className="partners container-fluid mt-5 pt-5">
-      <TitleHome title={"ĐỐI TÁC"} colorText={"2c2e53"}/>
+      <TitleHome title={"ĐỐI TÁC"} colorText={"2c2e53"} />
       <Slider {...settings} className="container-mx-10 mt-5">
         {status === "succeeded" ? (
           partners.map((partner) => (
-            <div className=""key={partner.id}>
-              <img src={partner.image} alt=""  />
+            <div className="" key={partner.id}>
+              <img src={partner.image} alt="" />
             </div>
           ))
         ) : (
