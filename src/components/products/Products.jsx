@@ -29,7 +29,7 @@ function Products({ products }) {
               ))
             ) : (
               <Loading />
-            )}{" "}
+            )}
           </Slider>
         </div>
       </div>

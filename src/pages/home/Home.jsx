@@ -4,6 +4,7 @@ import Slider from "../../components/slider/Slider";
 import ProductsHot from "../../components/productsHot/ProductsHot";
 import AboutUs from "../../components/aboutUs/AboutUs";
 import News from "../../components/news/News";
+import Partners from "../../components/partners/Partners";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <ProductsHot />
       <AboutUs />
       <News />
+      <Partners />
     </>
   );
 }

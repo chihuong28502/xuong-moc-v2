@@ -64,6 +64,9 @@ img {
   margin-bottom: 0.8rem;
   text-align: justify;
 }
+.list-img li{
+  list-style: none;
+}
 .home-news .desc {
   text-decoration: none;
   font-size: 1.4rem;
