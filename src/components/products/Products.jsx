@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Product from "./product/Product";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loading from "../loading/Loading";
 import "./products.css";
 
@@ -9,11 +9,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CustomArrows from "../slick-custom/CustomArrows";
 import { Link } from "react-router-dom";
+import { fetchCategories } from "../../redux/categoriesSlice";
 
 function Products({ products, showSlider }) {
-  const status = useSelector((state) => state.products.status);
+  const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.data);
-  console.log(categories);
+  const status = useSelector((state) => state.products.status);
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
