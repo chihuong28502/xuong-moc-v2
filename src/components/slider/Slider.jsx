@@ -1,5 +1,6 @@
 import React from "react";
 import "./slider.css";
+import { Link } from "react-router-dom";
 function Slider() {
   const dataBanner = {
     image: "http://cutuananh.devmaster.vn/images/AnhCat/banner.jpg",
@@ -21,7 +22,8 @@ function Slider() {
         </h1>
         <p>{dataBanner.description}</p>
         <a href={`/contact`}>
-          <button className="" type="submit">
+          <button type="submit">
+            <Link to={`/contact`} />
             LIÊN HỆ NGAY
           </button>
         </a>
