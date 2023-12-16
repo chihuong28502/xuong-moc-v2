@@ -1,8 +1,42 @@
 import React from "react";
-function Product({ product, column }) {
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addWishListAsync,
+  deleteWishListAsync,
+  removeItemWishList,
+} from "../../../redux/wishlistSlice";
+import { toast } from "react-toastify";
+function Product({ product, column, iconProducts }) {
+  const dispatch = useDispatch();
+  const wishlist = useSelector((state) => state.wishlist.data);
+  const handleAddOrRemoveProduct = async (product) => {
+    if (iconProducts !== "fa-solid fa-heart-crack") {
+      const arr = wishlist.filter((item) => product.id !== item.id);
+      // Dispatch the addData action to add the new data directly
+      if (arr.length !== wishlist.length) {
+        toast.error("Sản phẩm đã tồn tại");
+      } else {
+        try {
+          // Dispatch Thunk Action Creator để thêm sản phẩm và tự động cập nhật Redux store
+          await dispatch(addWishListAsync(product));
+          toast.success("Sản phẩm đã thêm vào mục yêu thích");
+        } catch (error) {
+          toast.promise("Sản phẩm yêu thích lỗi catch");
+        }
+      }
+    } else {
+      try {
+        // Dispatch Thunk Action Creator để thêm sản phẩm và tự động cập nhật Redux store
+        await dispatch(deleteWishListAsync(product.id));
+        toast.success("Sản phẩm xóa khỏi yêu thích");
+      } catch (error) {
+      }
+    }
+  };
+
   return (
     <>
-      <div className={`${column}`}>
+      <div className={column || "col-md-3"}>
         <div className="product-card ">
           <img
             src={`http://apixm.devmaster.vn/${product?.image}`}
@@ -229,8 +263,13 @@ function Product({ product, column }) {
                 <i className="fa-solid fa-magnifying-glass" />
               </button>
             </a>
-            <button className="btn" type="button" id="liveToastBtn">
-              <i className="fa-regular fa-heart"></i>
+            <button
+              className="btn"
+              type="button"
+              id="liveToastBtn"
+              onClick={(e) => handleAddOrRemoveProduct(product)}
+            >
+              <i className={iconProducts || "fa-regular fa-heart"}></i>
             </button>
             <button className="btn" type="button" id="liveToastBtn">
               <i className="fa-solid fa-cart-shopping"></i>

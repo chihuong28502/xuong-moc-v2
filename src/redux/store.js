@@ -5,6 +5,7 @@ import aboutUsSlice from "../components/aboutUs/aboutUsSlice";
 import policiesSlice from "../components/aboutUs/policiesSlice";
 import newsSlice from "./newsSlice";
 import partnersSlice from "../components/partners/partnersSlice";
+import wishlistSlice from "./wishlistSlice";
 const store = configureStore({
   reducer: {
     categories: categoriesSlice,
@@ -13,6 +14,7 @@ const store = configureStore({
     policies: policiesSlice,
     news: newsSlice,
     partners: partnersSlice,
+    wishlist: wishlistSlice,
   },
 });
 export default store;
