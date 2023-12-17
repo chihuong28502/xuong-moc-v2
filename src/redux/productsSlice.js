@@ -3,7 +3,7 @@ import axios from "axios";
 import { BaseURLXMAPI } from "../utils/http";
 
 export const fetchProducts = createAsyncThunk(
-  "posts/fetchProducts",
+  "products/fetchProducts",
   async () => {
     const response = await axios.get(`${BaseURLXMAPI}/products`);
     return response.data;
@@ -11,7 +11,7 @@ export const fetchProducts = createAsyncThunk(
 );
 
 const productsSlice = createSlice({
-  name: "posts",
+  name: "products",
   initialState: { data: [], status: "idle", error: null },
   reducers: {},
   extraReducers: (builder) => {

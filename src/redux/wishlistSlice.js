@@ -11,37 +11,36 @@ export const fetchWishlist = createAsyncThunk(
 );
 export const addWishListAsync = createAsyncThunk(
   "wishlist/addWishList",
-  async (itemWishList, { dispatch }) => {
+  async (product, { dispatch }) => {
     try {
       // Gửi dữ liệu mới đến API để thêm sản phẩm mới
       const response = await axios.post(
         `${BaseURLXMAPILocal}/wishlist`,
-        itemWishList
+        product
       );
       // Dispatch action để cập nhật Redux store với sản phẩm mới
       dispatch(wishlistSlice.actions.addItemWishList(response.data));
 
       return response.data;
     } catch (error) {
-      console.error("Error adding addWishList:", error);
+      console.error("[ERROR]: addWishListAsync");
       throw error;
     }
   }
 );
 export const deleteWishListAsync = createAsyncThunk(
   "wishlist/deleteWishList",
-  async (itemWishListId, { dispatch }) => {
+  async (productId, { dispatch }) => {
     try {
       // Gửi dữ liệu mới đến API để thêm sản phẩm mới
       const response = await axios.delete(
-        `${BaseURLXMAPILocal}/wishlist/${itemWishListId}`
+        `${BaseURLXMAPILocal}/wishlist/${productId}`
       );
       // Dispatch action để cập nhật Redux store với sản phẩm mới
-      dispatch(wishlistSlice.actions.removeItemWishList(itemWishListId));
+      dispatch(wishlistSlice.actions.removeItemWishList(productId));
       return response.data;
     } catch (error) {
-      console.log("itemWishListId", itemWishListId);
-      console.error("Error adding addWishList:", error);
+      console.error("[ERROR]: deleteWishListAsync");
       throw error;
     }
   }

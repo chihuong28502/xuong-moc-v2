@@ -3,21 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addWishListAsync,
   deleteWishListAsync,
-  removeItemWishList,
 } from "../../../redux/wishlistSlice";
 import { toast } from "react-toastify";
+import { BaseURLXMAPIIMGLINK } from "../../../utils/http";
 function Product({ product, column, iconProducts }) {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.data);
   const handleAddOrRemoveProduct = async (product) => {
     if (iconProducts !== "fa-solid fa-heart-crack") {
-      const arr = wishlist.filter((item) => product.id !== item.id);
-      // Dispatch the addData action to add the new data directly
-      if (arr.length !== wishlist.length) {
+      let check = wishlist.find((item) => item.id === product.id);
+      if (check) {
         toast.error("Sản phẩm đã tồn tại");
       } else {
         try {
-          // Dispatch Thunk Action Creator để thêm sản phẩm và tự động cập nhật Redux store
+          // Dispatch thêm sản phẩm và tự động cập nhật Redux store
           await dispatch(addWishListAsync(product));
           toast.success("Sản phẩm đã thêm vào mục yêu thích");
         } catch (error) {
@@ -29,8 +28,7 @@ function Product({ product, column, iconProducts }) {
         // Dispatch Thunk Action Creator để thêm sản phẩm và tự động cập nhật Redux store
         await dispatch(deleteWishListAsync(product.id));
         toast.success("Sản phẩm xóa khỏi yêu thích");
-      } catch (error) {
-      }
+      } catch (error) {}
     }
   };
 
@@ -39,7 +37,7 @@ function Product({ product, column, iconProducts }) {
       <div className={column || "col-md-3"}>
         <div className="product-card ">
           <img
-            src={`http://apixm.devmaster.vn/${product?.image}`}
+            src={`${BaseURLXMAPIIMGLINK}${product?.image}`}
             alt="san pham"
             className="product-card__image "
           />

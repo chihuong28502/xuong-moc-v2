@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchNews } from "../../redux/newsSlice";
 import Loading from "../loading/Loading";
 import TitleHome from "../titleHome/TitleHome";
+import { BaseURLXMAPIIMGLINK } from "../../utils/http";
 function News() {
   const dispatch = useDispatch();
   const news = useSelector((state) => state.news.data);
@@ -29,7 +30,7 @@ function News() {
                 <div className="thumbnail box">
                   <div className="img img-main">
                     <img
-                      src={`http://apixm.devmaster.vn/${news[0]?.image}`}
+                      src={`${BaseURLXMAPIIMGLINK}${news[0]?.image}`}
                       alt=""
                     />
                   </div>
@@ -46,7 +47,6 @@ function News() {
                   {news.slice(0, 3).map((item, index) => (
                     <a
                       href="/"
-                      // to={`/news/${slugify(item.title)}`}
                       className="row fix-height"
                       key={index}
                     >
@@ -54,7 +54,7 @@ function News() {
                         <div className="img img-list">
                           <img
                             className="home-new-img-item"
-                            src={`http://apixm.devmaster.vn/${item.image}`}
+                            src={`${BaseURLXMAPIIMGLINK}${item.image}`}
                             alt="tin tức"
                           />
                         </div>

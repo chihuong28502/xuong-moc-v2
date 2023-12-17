@@ -13,7 +13,6 @@ function ProductsHot() {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
-  // products.filter((product) => product.hot === 1);
   return (
     <>
       <div className="wrap-cotnainer-home-item container-fluid">

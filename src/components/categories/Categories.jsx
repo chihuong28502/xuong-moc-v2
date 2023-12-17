@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../redux/categoriesSlice";
 import "./categories.css";
 import Loading from "../loading/Loading";
+import { BaseURLXMAPIIMGLINK } from "../../utils/http";
 function Categories() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.data);
   const status = useSelector((state) => state.categories.status);
-  useEffect(() => {
-    dispatch(fetchCategories());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchCategories());
+  // }, [dispatch]);
   if (status === "loading") {
     return (
       <div>
@@ -26,7 +27,7 @@ function Categories() {
               <div className="col-md-3 my-5" key={category.id}>
                 <a href="/">
                   <img
-                    src={`http://apixm.devmaster.vn/${category.icon}`}
+                    src={`${BaseURLXMAPIIMGLINK}${category.icon}`}
                     alt={categories.title}
                   />
                   <p>{category.title}</p>
