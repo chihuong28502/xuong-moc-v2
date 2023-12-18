@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchWishlist } from "../../../redux/wishlistSlice";
@@ -19,7 +19,6 @@ function Wishlist() {
       </div>
     );
   }
-
   return (
     <>
       <Link
@@ -41,11 +40,11 @@ function Wishlist() {
           ) : (
             <div className=" box-wishlist">
               <div className="box__title">Danh sách yêu thích</div>
-              {wishlist.slice(0,8 ).map((item) => (
+              {wishlist.slice(0, 8).map((item) => (
                 <BoxWishList wishlist={item} key={item.id} />
               ))}
               <div className="check">
-                <p>có {wishlist.length} sản phẩm</p>
+                <p>có {wishlist?.length} sản phẩm</p>
                 <Link className="check__btn" to={"/wishlistAll"}>
                   Xem chi tiết
                 </Link>

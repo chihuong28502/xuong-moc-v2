@@ -1,20 +1,14 @@
 import React from "react";
-import { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
 import Product from "../products/product/Product";
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
-import Slider from "../slider/Slider";
 import Loading from "../loading/Loading";
 
-function AllWishList() {
+function AllWishList({ title,products,status }) {
   let [numberLoad, setNumberLoad] = useState(4);
   let iconProducts = "fa-solid fa-heart-crack";
-  const wishlist = useSelector((state) => state.wishlist.data);
-  const status = useSelector((state) => state.wishlist.status);
   const [filters, setFilters] = useState();
   const handleShowAllProducts = () => {
-    setNumberLoad((numberLoads) => numberLoads + wishlist?.length);
+    setNumberLoad(numberLoad + products?.length);
   };
   window.onscroll = () => {
     if (
@@ -43,14 +37,16 @@ function AllWishList() {
           onFilter={handleFilter}
         /> */}
           <div className="all-product__item--title">
-            <h4>Danh sách yêu thích ({wishlist?.length}sản phẩm) </h4>
+            {title && (
+              <h4>Danh sách yêu thích ({products?.length}sản phẩm) </h4>
+            )}
           </div>
           {status === "loading" ? (
             <Loading />
           ) : (
             <div className="row">
               {filters === undefined
-                ? wishlist
+                ? products
                     ?.slice(0, numberLoad)
                     .map((item) => (
                       <Product

@@ -4,6 +4,7 @@ import { fetchCategories } from "../../redux/categoriesSlice";
 import "./categories.css";
 import Loading from "../loading/Loading";
 import { BaseURLXMAPIIMGLINK } from "../../utils/http";
+import { Link } from "react-router-dom";
 function Categories() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.data);
@@ -25,13 +26,13 @@ function Categories() {
           <div className="row">
             {categories.map((category) => (
               <div className="col-md-3 my-5" key={category.id}>
-                <a href="/">
+                <Link  to={`/products/${(category.slug)}`}>
                   <img
                     src={`${BaseURLXMAPIIMGLINK}${category.icon}`}
                     alt={categories.title}
                   />
                   <p>{category.title}</p>
-                </a>
+                </Link>
               </div>
             ))}
           </div>
