@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 import React, { useEffect } from "react";
 import Product from "./product/Product";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +25,8 @@ function Products({ products, showSlider }) {
     slidesToShow: 4,
     prevArrow: <CustomArrows direction="fa-solid fa-chevron-left" />,
     nextArrow: <CustomArrows direction="fa-solid fa-chevron-right" />,
+    prevArrow: null,
+    nextArrow: null,
   };
   const elementAllproducts = categories.map((item, index) => {
     return (

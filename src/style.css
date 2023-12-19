@@ -13,6 +13,9 @@ ol,
 ul {
   padding-left: 0;
 }
+a {
+  text-decoration: none;
+}
 .container-ct {
   padding-left: 10%;
   padding-right: 10%;

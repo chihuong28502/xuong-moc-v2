@@ -65,6 +65,7 @@ function Contact() {
     if (Object.keys(newErrors).length === 0) {
       // Perform your form submission logic here
       alert("success");
+      console.log(formData);
     }
   };
   return (

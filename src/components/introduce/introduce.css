@@ -1,0 +1,51 @@
+.container-introduce-white{
+  background-color: #fff;
+  padding: 3rem;
+}
+.container-introduce{
+  background-color: #f3f3f3;
+}
+.box-about .row:not(:last-child) {
+  margin-bottom: 3rem;
+}
+.about-vision p {
+  margin-top: 1.5rem;
+}
+.box-about p {
+  margin-bottom: 0;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.about-policy .thumbnail {
+  border: 0.2rem solid #bd945f;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  height: 7rem;
+}
+.about-policy .image {
+  max-width: 5rem;
+}
+.about-policy .content {
+  margin-left: 1rem;
+  text-align: left;
+}
+.about-policy .title {
+  color: #bd945f;
+}
+.box-about {
+  text-align: center;
+}
+.about-vision p {
+  margin-top: 1.5rem;
+}
+.about-history p {
+  text-align: justify;
+}
+p.desc{
+  text-transform: lowercase;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+  color: black;
+  line-height: 1.3rem;
+}
