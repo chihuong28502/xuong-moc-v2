@@ -6,6 +6,7 @@ export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   async () => {
     const response = await axios.get(`${BaseURLXMAPI}/categories`);
+    localStorage.setItem("categories", JSON.stringify(response.data));
     return response.data;
   }
 );

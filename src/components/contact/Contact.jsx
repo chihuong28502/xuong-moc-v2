@@ -70,7 +70,6 @@ function Contact() {
   };
   return (
     <>
-      <Slider />
       <div className="box-content">
         <div className="wrapper-box container w-75">
           <div className="row">

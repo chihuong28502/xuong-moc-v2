@@ -6,14 +6,25 @@ export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
     const response = await axios.get(`${BaseURLXMAPI}/products`);
+    localStorage.setItem("products", JSON.stringify(response.data));
     return response.data;
   }
 );
 
 const productsSlice = createSlice({
   name: "products",
-  initialState: { data: [], status: "idle", error: null },
-  reducers: {},
+  initialState: {
+    data: [],
+    dataDetail: null,
+    status: "idle",
+    error: null,
+  },
+  reducers: {
+    setDataDetail: (state, action) => {
+      localStorage.setItem("dataDetail", JSON.stringify(action.payload));
+      state.dataDetail = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -29,5 +40,5 @@ const productsSlice = createSlice({
       });
   },
 });
-
+export const { setDataDetail } = productsSlice.actions;
 export default productsSlice.reducer;

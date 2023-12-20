@@ -6,6 +6,8 @@ import {
 } from "../../../redux/wishlistSlice";
 import { toast } from "react-toastify";
 import { BaseURLXMAPIIMGLINK } from "../../../utils/http";
+import { Link } from "react-router-dom";
+import { setDataDetail } from "../../../redux/productsSlice";
 function Product({ product, column, iconProducts }) {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.data);
@@ -31,7 +33,10 @@ function Product({ product, column, iconProducts }) {
       } catch (error) {}
     }
   };
+  const handleClickProductDetail = (product) => {
+    dispatch(setDataDetail( product ));
 
+  };
   return (
     <>
       <div className={column || "col-md-3"}>
@@ -256,11 +261,14 @@ function Product({ product, column, iconProducts }) {
             </span>
           </div>
           <div className="product-card__group-btn">
-            <a href="/" className="see-all">
-              <button className="btn">
+            <Link to={`/products/product/${product.slug}`} className="see-all">
+              <button
+                className="btn"
+                onClick={(e) => handleClickProductDetail(product)}
+              >
                 <i className="fa-solid fa-magnifying-glass" />
               </button>
-            </a>
+            </Link>
             <button
               className="btn"
               type="button"
