@@ -6,6 +6,7 @@ import AllProductsCategoriesPage from "../pages/allProductsCategoriesPage/AllPro
 import IntroducePage from "../pages/introduce/IntroducePage";
 import ProductDetail from "../components/productDetail/ProductDetail";
 import ProductDetailPage from "../pages/productDetailPage/ProductDetailPage";
+import AllDataSearch from "../pages/allDataSearch/AllDataSearch";
 const listRouter = [
   {
     path: "/",
@@ -28,6 +29,7 @@ const listRouter = [
     component: AllWishListPage,
   },
   { path: "/products/:slug", component: AllProductsCategoriesPage },
+  { path: "/search/:value", component: AllDataSearch },
 
   { path: "/products/product/:slug", component: ProductDetailPage },
 ];

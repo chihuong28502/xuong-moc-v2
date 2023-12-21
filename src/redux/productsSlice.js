@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BaseURLXMAPI } from "../utils/http";
+import slugifyText from "../utils/formatText";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
@@ -16,6 +17,8 @@ const productsSlice = createSlice({
   initialState: {
     data: [],
     dataDetail: null,
+    valueSearch: "",
+    dataSearch: [],
     status: "idle",
     error: null,
   },
@@ -23,6 +26,12 @@ const productsSlice = createSlice({
     setDataDetail: (state, action) => {
       localStorage.setItem("dataDetail", JSON.stringify(action.payload));
       state.dataDetail = action.payload;
+    },
+    setValueSearch: (state, action) => {
+      state.valueSearch = action.payload;
+    },
+    setDataSearch: (state, action) => {
+      state.dataSearch = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -40,5 +49,6 @@ const productsSlice = createSlice({
       });
   },
 });
-export const { setDataDetail } = productsSlice.actions;
+export const { setDataDetail, setValueSearch, setDataSearch } =
+  productsSlice.actions;
 export default productsSlice.reducer;

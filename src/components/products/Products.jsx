@@ -23,10 +23,6 @@ function Products({ products, showSlider }) {
     autoplay: true,
     autoplaySpeed: 3000,
     slidesToShow: 4,
-    prevArrow: <CustomArrows direction="fa-solid fa-chevron-left" />,
-    nextArrow: <CustomArrows direction="fa-solid fa-chevron-right" />,
-    prevArrow: null,
-    nextArrow: null,
   };
   const elementAllproducts = categories.map((item, index) => {
     return (
