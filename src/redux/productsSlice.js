@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BaseURLXMAPI } from "../utils/http";
-import slugifyText from "../utils/formatText";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
@@ -19,6 +18,7 @@ const productsSlice = createSlice({
     dataDetail: null,
     valueSearch: "",
     dataSearch: [],
+    dataFilter: [],
     status: "idle",
     error: null,
   },
@@ -32,6 +32,9 @@ const productsSlice = createSlice({
     },
     setDataSearch: (state, action) => {
       state.dataSearch = action.payload;
+    },
+    setDataFilter: (state, action) => {
+      state.dataFilter = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -49,6 +52,6 @@ const productsSlice = createSlice({
       });
   },
 });
-export const { setDataDetail, setValueSearch, setDataSearch } =
+export const { setDataDetail, setValueSearch, setDataSearch,setDataFilter } =
   productsSlice.actions;
 export default productsSlice.reducer;

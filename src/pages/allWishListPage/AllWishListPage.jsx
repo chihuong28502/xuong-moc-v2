@@ -22,7 +22,7 @@ function AllWishListPage() {
     <>
       <Header />
       <Slider dataBanner={dataBanner}/>
-      <AllProducts title={title} products={wishlist} status={status} />
+      <AllProducts title={title} products={wishlist} status={status} iconProducts={'fa-solid fa-heart-crack'} />
       <Footer />
     </>
   );

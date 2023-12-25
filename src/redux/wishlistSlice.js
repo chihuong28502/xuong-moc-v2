@@ -20,7 +20,6 @@ export const addWishListAsync = createAsyncThunk(
       );
       // Dispatch action để cập nhật Redux store với sản phẩm mới
       dispatch(wishlistSlice.actions.addItemWishList(response.data));
-
       return response.data;
     } catch (error) {
       console.error("[ERROR]: addWishListAsync");

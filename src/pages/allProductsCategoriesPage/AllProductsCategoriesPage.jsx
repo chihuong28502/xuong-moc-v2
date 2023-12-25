@@ -25,11 +25,16 @@ function AllProductsCategories() {
     description:
       "Sứ mệnh của chúng tôi là kết hợp hài hòa giữa ý tưởng và mong muốn của khách hàng, đem lại những phút giây thư giãn tuyệt vời bên gia đình và những người thân yêu.",
   };
+
   return (
     <>
       <Header />
       <Slider dataBanner={dataBanner} />
-      <AllProducts products={data} status={status} />
+      <AllProducts
+        products={data}
+        status={status}
+        iconProducts={"fa-regular fa-heart"}
+      />
       <Footer />
     </>
   );

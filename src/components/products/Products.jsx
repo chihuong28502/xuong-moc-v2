@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 import CustomArrows from "../slick-custom/CustomArrows";
 import { Link } from "react-router-dom";
 import { fetchCategories } from "../../redux/categoriesSlice";
+import Filter from "../filter/Filter";
 
 function Products({ products, showSlider }) {
   const dispatch = useDispatch();

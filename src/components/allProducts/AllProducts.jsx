@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Product from "../products/product/Product";
 import Loading from "../loading/Loading";
+import Filter from "../filter/Filter";
+import { useSelector } from "react-redux";
 
-function AllWishList({ title,products,status }) {
+function AllWishList({ title, products, status, iconProducts }) {
+  const dataFilter = useSelector((state) => state.products.dataFilter);
+  const [data, setData] = useState(products);
   let [numberLoad, setNumberLoad] = useState(4);
-  let iconProducts = "fa-solid fa-heart-crack";
-  const [filters, setFilters] = useState();
   const handleShowAllProducts = () => {
     setNumberLoad(numberLoad + products?.length);
   };
+
+  useEffect(() => {
+    setData(dataFilter);
+  }, [dataFilter]);
+  useEffect(() => {
+    setData(products);
+  }, [products]);
   window.onscroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
@@ -18,7 +27,6 @@ function AllWishList({ title,products,status }) {
       handleShowAllProducts();
     }
   };
-
   if (status === "loading") {
     return (
       <div>
@@ -30,12 +38,7 @@ function AllWishList({ title,products,status }) {
     <>
       <div className="box-content all-product">
         <div className="all-product__item container">
-          {/* <Control
-          product={local}
-          sort={sort}
-          setSort={setSort}
-          onFilter={handleFilter}
-        /> */}
+          <Filter products={products} />
           <div className="all-product__item--title">
             {title && (
               <h4>Danh sách yêu thích ({products?.length}sản phẩm) </h4>
@@ -45,27 +48,13 @@ function AllWishList({ title,products,status }) {
             <Loading />
           ) : (
             <div className="row">
-              {filters === undefined
-                ? products
-                    ?.slice(0, numberLoad)
-                    .map((item) => (
-                      <Product
-                        iconProducts={iconProducts}
-                        filters={filters}
-                        product={item}
-                        key={item.id}
-                      />
-                    ))
-                : filters
-                    .slice(0, numberLoad)
-                    .map((item) => (
-                      <Product
-                        iconProducts={iconProducts}
-                        filters={filters}
-                        product={item}
-                        key={item.id}
-                      />
-                    ))}
+              {data.map((item) => (
+                <Product
+                  iconProducts={iconProducts}
+                  product={item}
+                  key={item.id}
+                />
+              ))}
             </div>
           )}
           <div className="load-more">
